@@ -22,26 +22,52 @@ public class ColonAccountDaoList implements Dao<AccountDto> {
 
     @Override
     public boolean create(AccountDto obj) {    
+        if (obj instanceof ColonAccountDto) {
+            ColonAccountDto colonAccount = (ColonAccountDto) obj;
+            if (!listColonAccount.contains(colonAccount)) {
+                listColonAccount.add(colonAccount);
+                return true; // Cuenta creada con éxito
+            }
+        }
         return false;
     }
 
     @Override
     public AccountDto read(String id) {
+        for (ColonAccountDto colonAccount : listColonAccount) {
+            if (colonAccount.getNumber().equals(id)) {
+                return colonAccount; // Devolver la cuenta si se encuentra
+            }
+        }
         return null;
     }
 
     @Override
     public List<AccountDto> readAll() {
-        return null;
+        return new ArrayList<>(listColonAccount);
     }
 
     @Override
     public boolean update(AccountDto obj) {
-        return false;  
+        if (obj instanceof ColonAccountDto) {
+            ColonAccountDto colonAccount = (ColonAccountDto) obj;
+            int index = listColonAccount.indexOf(colonAccount);
+            if (index != -1) {
+                listColonAccount.set(index, colonAccount);
+                return true;
+            }
+        }
+        return false; 
     }
 
     @Override
     public boolean delete(AccountDto obj) {
-        return false; 
+        if (obj instanceof ColonAccountDto) {
+            ColonAccountDto colonAccount = (ColonAccountDto) obj;
+            if (listColonAccount.remove(colonAccount)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
