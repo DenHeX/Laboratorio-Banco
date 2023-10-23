@@ -2,8 +2,7 @@ package Transaction.Daos;
 
 import InterfaceDaoListTransaction.DaoListTransaction;
 import Transaction.Dtos.DepositDto;
-import Dao.Dao;
-import Transaction.Dtos.DepositDto;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,18 +22,27 @@ public class DepositDaoList implements DaoListTransaction<DepositDto>{
     }
 
      @Override
-    public boolean create(DepositDto obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean create(DepositDto deposit) {
+        if (depositList == null) {
+            return false;
+        }
+        String source = deposit.getSource().getNumber();
+
+        if (!depositList.containsKey(source)) {
+            depositList.put(source, deposit);
+            return true;
+        } else {
+            return false;
+        }
     }
 
      @Override
     public DepositDto read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return depositList.get(id);
     }
 
      @Override
     public List<DepositDto> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new ArrayList<>(depositList.values());
     }
-    
 }

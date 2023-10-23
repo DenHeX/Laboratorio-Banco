@@ -1,45 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Transaction.Controller;
 
 import Controller.Controller;
 import Dao.Dao;
+import Transaction.Daos.TransferDaoList;
 import Transaction.Transaction;
 import Transaction.Transfer;
-import Transaction.Withdrawal;
-import Transaction.Withdrawal;
 import Views.View;
 import java.util.List;
 
-/**
- *
- * @author ´Felipe Chacón
- */
-public class WithdrawalController implements Controller <Withdrawal> {
+public class TransferController implements Controller<Transfer>{
     private View view;
     private Dao dao;
 
-    public WithdrawalController(View view, Dao dao) {
+    public TransferController(View view, TransferDaoList list) {
         this.view = view;
         this.dao = dao;
     }
-    
+
     @Override
-    public boolean create(Withdrawal obj) {
-       if (dao.create(obj)) {
-            view.displayMessage("Retiro registrado con éxito.");
+    public boolean create(Transfer obj) {
+        if (dao.create(obj)) {
+            view.displayMessage("Depósito registrado con éxito.");
             return true;
         } else {
-            view.displayMessage("Error al registrar el retiro.");
+            view.displayMessage("Error al registrar el depósito.");
             return false;
-        }     
+        }    
     }
 
     @Override
-    public Withdrawal read(String id) {
-        Withdrawal transaction = (Withdrawal) dao.read(id);
+    public Transfer read(String id) {
+        Transfer transaction = (Transfer) dao.read(id);
 
         if (transaction == null) {
             view.displayMessage("Transacción no encontrada.");
@@ -50,8 +41,8 @@ public class WithdrawalController implements Controller <Withdrawal> {
     }
 
     @Override
-    public List<Withdrawal> readAll() {
-        List<Withdrawal> transactions = dao.readAll();
+    public List<Transfer> readAll() {
+        List<Transfer> transactions = dao.readAll();
 
         if (!transactions.isEmpty()) {
             for (Transaction transaction : transactions) {
@@ -65,7 +56,7 @@ public class WithdrawalController implements Controller <Withdrawal> {
     }
 
     @Override
-    public boolean update(Withdrawal obj) {
+    public boolean update(Transfer obj) {
         if (dao.update(obj)) {
             view.displayMessage("Transacción actualizada con éxito.");
             return true;
@@ -76,7 +67,7 @@ public class WithdrawalController implements Controller <Withdrawal> {
     }
 
     @Override
-    public boolean delete(Withdrawal obj) {
+    public boolean delete(Transfer obj) {
         if (dao.delete(obj)) {
             view.displayMessage("Transacción eliminada con éxito.");
             return true;

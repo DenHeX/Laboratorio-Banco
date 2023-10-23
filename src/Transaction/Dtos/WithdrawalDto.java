@@ -11,15 +11,10 @@ import java.util.Date;
  *
  * @author rsand
  */
-public class WithdrawalDto {
-    private double amount;
-    private Account source;
-    private Date date;
+public class WithdrawalDto extends TransactionDto {
 
     public WithdrawalDto(double amount, Account source, Date date) {
-        this.amount = amount;
-        this.source = source;
-        this.date = date;
+        super(amount, source, date);
     }
 
 }

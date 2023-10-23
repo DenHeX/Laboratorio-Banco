@@ -7,21 +7,14 @@ package Transaction.Dtos;
 import Account.Account;
 import java.util.Date;
 
-/**
- *
- * @author rsand
- */
-public class TransferDto {
+public class TransferDto extends TransactionDto {
     private Account destination;
-    private double amount;
-    private Account source;
 
-    public TransferDto(Account destination, double amount, Account source) {
+    public TransferDto(double amount, Account source, Account destination, Date date) {
+        super(amount, source, date);
         this.destination = destination;
-        this.amount = amount;
-        this.source = source;
     }
-    
+
     public Account getDestination() {
         return destination;
     }

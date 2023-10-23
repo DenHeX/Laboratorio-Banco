@@ -16,7 +16,7 @@ public abstract class TransactionDto {
     private Account source;
     private Date date;
 
-    public TransactionDto(double amount, Account source) {
+    public TransactionDto(double amount, Account source, Date date) {
         this.amount = amount;
         this.source = source;
         this.date = date;

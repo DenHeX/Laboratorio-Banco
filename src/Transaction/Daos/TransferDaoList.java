@@ -4,6 +4,7 @@ import InterfaceDaoListTransaction.DaoListTransaction;
 import java.util.HashMap;
 import java.util.List;
 import Transaction.Dtos.TransferDto;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,18 +25,27 @@ public class TransferDaoList implements DaoListTransaction <TransferDto> {
         return instance;
     }
     @Override
-    public boolean create(TransferDto obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean create(TransferDto transfer) {
+        if (transferlist == null) {
+            return false;
+        }
+        String source = transfer.getSource().getNumber();
+
+        if (!transferlist.containsKey(source)) {
+            transferlist.put(source, transfer);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public TransferDto read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return transferlist.get(id);
     }
 
     @Override
     public List<TransferDto> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new ArrayList<>(transferlist.values());
     }
-
 }
