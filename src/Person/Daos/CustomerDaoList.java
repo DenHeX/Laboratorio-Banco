@@ -9,12 +9,12 @@ import java.util.List;
 public class CustomerDaoList implements Dao<CustomerDto> {
 
     private HashMap<String, CustomerDto> customerList;
-    private static CustomerDaoList instance;
+    private static Dao instance;
     
     public CustomerDaoList() {
         customerList = new HashMap();
     }
-    public static CustomerDaoList getInstance(){
+    public static Dao getInstance(){
         if(instance == null){
             instance = new CustomerDaoList();
         }

@@ -1,19 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Person.Dtos;
 
-import Person.*;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Date;
 
-/**
- *
- * @author rsand
- */
-public class CustomerDto extends Person {
+public class CustomerDto extends PersonDto {
    private Date dateOfBirth; 
    private String phone;  
    private String email;

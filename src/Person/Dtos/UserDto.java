@@ -1,13 +1,5 @@
 package Person.Dtos;
 
-
-import Person.*;
-
-/**
- *
- * @author rsand
- */
-
 public class UserDto extends PersonDto{
     private String username;
     private int password;

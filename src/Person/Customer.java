@@ -1,24 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Person;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.sql.Date;
 
-/**
- *
- * @author rsand
- */
 public class Customer extends Person {
-   private Date dateOfBirth; 
-   private String phone;  
-   private String email;
-   private String address;
 
-    public Customer(String id, String name, Date dateOfBirth, String phone, String email, String address ) {
+    private Date dateOfBirth;
+    private String phone;
+    private String email;
+    private String address;
+
+    public Customer(String id, String name, Date dateOfBirth, String phone, String email, String address) {
         super(id, name);
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
@@ -37,6 +30,7 @@ public class Customer extends Person {
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
+
     public String getPhone() {
         return phone;
     }
@@ -60,11 +54,11 @@ public class Customer extends Person {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     public int getAge() {
         return calculateAge();
     }
-    
+
     private int calculateAge() {
         LocalDate birthDate = dateOfBirth.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
         LocalDate currentDate = LocalDate.now();
